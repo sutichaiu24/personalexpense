@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:personalexpense/transaction.dart';
 import 'package:personalexpense/transaction.dart' as prefix0;
+import 'package:intl/intl.dart';
 import './transaction.dart';
 
 void main() => runApp(MyApp());
@@ -28,7 +29,10 @@ class MyHomePage extends StatelessWidget {
       date: DateTime.now(),
     ),
     Transaction(
-        amount: 16, id: 't2', title: 'Weekly Groceries', date: DateTime.now())
+        amount: 16.53,
+        id: 't2',
+        title: 'Weekly Groceries',
+        date: DateTime.now())
   ];
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter Apps'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -46,6 +50,11 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               child: Text('Chart!'),
               elevation: 5,
+            ),
+          ),
+          Card(
+            child: Column(
+              children: <Widget>[TextField(), TextField()],
             ),
           ),
           Column(
@@ -58,21 +67,27 @@ class MyHomePage extends StatelessWidget {
                           EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                       decoration: BoxDecoration(
                           border: Border.all(
-                        color: Colors.black,
+                        color: Colors.purple,
                         width: 2,
                       )),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        tx.amount.toString(),
+                        '\$${tx.amount}',
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: Colors.purple),
                       ),
                     ),
                     Column(children: <Widget>[
-                      Text(tx.title),
-                      Text(tx.date.toString())
+                      Text(
+                        tx.title,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        DateFormat.yMMMMEEEEd().format(tx.date),
+                        style: TextStyle(color: Colors.grey),
+                      )
                     ]),
                   ],
                 ),
