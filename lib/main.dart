@@ -40,13 +40,29 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter Apps'),
       ),
       body: Column(
- //       mainAxisAlignment: MainAxisAlignment.start,
+        //   mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            width: double.infinity
+          Container(width: double.infinity),
+          Card(
+            elevation: 5,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[TextField(
+                decoration: InputDecoration(labelText: 'Title'),
+
+              ), TextField(
+                decoration: InputDecoration(labelText: 'Amount')
+              ), 
+              FlatButton(child: Text('Add Transaction',
+              ),
+              textColor: Colors.purple,
+              
+
+              onPressed: (){},)
+              ],
+            ),
           ),
-        
           Column(
             children: transactions.map((tx) {
               return Card(
@@ -59,8 +75,7 @@ class MyHomePage extends StatelessWidget {
                           border: Border.all(
                         color: Colors.purple,
                         width: 3,
-                      )
-                      ),
+                      )),
                       padding: EdgeInsets.all(9),
                       child: Text(
                         '\$${tx.amount}',
