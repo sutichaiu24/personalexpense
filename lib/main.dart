@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:personalexpense/transaction.dart';
-import 'package:personalexpense/transaction.dart' as prefix0;
 import 'package:intl/intl.dart';
 import './transaction.dart';
 
@@ -29,9 +28,9 @@ class MyHomePage extends StatelessWidget {
       date: DateTime.now(),
     ),
     Transaction(
-        amount: 16.53,
         id: 't2',
         title: 'Weekly Groceries',
+        amount: 16.53,
         date: DateTime.now())
   ];
   @override
@@ -41,22 +40,13 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter Apps'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+ //       mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
-            width: double.infinity,
-            child: Card(
-              color: Colors.blue,
-              child: Text('Chart!'),
-              elevation: 5,
-            ),
+            width: double.infinity
           ),
-          Card(
-            child: Column(
-              children: <Widget>[TextField(), TextField()],
-            ),
-          ),
+        
           Column(
             children: transactions.map((tx) {
               return Card(
@@ -68,9 +58,10 @@ class MyHomePage extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(
                         color: Colors.purple,
-                        width: 2,
-                      )),
-                      padding: EdgeInsets.all(10),
+                        width: 3,
+                      )
+                      ),
+                      padding: EdgeInsets.all(9),
                       child: Text(
                         '\$${tx.amount}',
                         style: TextStyle(
@@ -85,7 +76,7 @@ class MyHomePage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        DateFormat.yMMMMEEEEd().format(tx.date),
+                        DateFormat.yMMMd().format(tx.date),
                         style: TextStyle(color: Colors.grey),
                       )
                     ]),
