@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:personalexpense/widgets/new_transaction.dart';
+import 'package:personalexpense/widgets/transaction_list.dart';
 import './models/transaction.dart';
 
 void main() => runApp(MyApp());
@@ -35,32 +37,8 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(width: double.infinity),
-          Card(
-            elevation: 5,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[TextField(
-                controller: titleController,
-                decoration: InputDecoration(labelText: 'Title'),
-                // onChanged: (val) {
-                //   titleInput = val ;
-               // } ,
-              ), TextField(
-                controller: amountController,
-                decoration: InputDecoration(labelText: 'Amount'),
-                // onChanged: (val) => amountInput = val,
-              ), 
-              FlatButton(child: Text('Add Transaction',
-              ),
-              textColor: Colors.purple,
-              onPressed: (){
-                print (titleController.text);
-                print (amountController.text);
-              },)
-              ],
-            ),
-          ),
-          
+          NewTransaction(),
+          TransactionList()
         ],
       ),
     );
