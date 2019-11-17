@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:personalexpense/widgets/new_transaction.dart';
 import 'package:personalexpense/widgets/transaction_list.dart';
+import 'package:personalexpense/widgets/user_transaction.dart';
 import './models/transaction.dart';
 
 void main() => runApp(MyApp());
@@ -26,6 +27,7 @@ class MyHomePage extends StatelessWidget {
   // String amountInput;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +38,10 @@ class MyHomePage extends StatelessWidget {
         //   mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(width: double.infinity),
-          NewTransaction(),
-          TransactionList()
+          Container(
+            width: double.infinity
+          ),
+          UserTransactions()
         ],
       ),
     );
