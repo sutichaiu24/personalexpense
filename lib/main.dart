@@ -22,11 +22,16 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
- 
-  // String titleInput; 
+  // String titleInput;
   // String amountInput;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+
+  void startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(context: ctx, builder: (_) {
+      return NewTransaction();
+    },);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +40,20 @@ class MyHomePage extends StatelessWidget {
         title: Text('Personal Expense'),
       ),
       body: SingleChildScrollView(
-        child:   Column(
-        //   mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Container(
-            width: double.infinity
-          ),
-          UserTransactions()
-        ],
+        child: Column(
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(width: double.infinity),
+            UserTransactions()
+          ],
+        ),
       ),
-      )
-    
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
     );
   }
 }
